@@ -81,25 +81,17 @@ document.addEventListener('DOMContentLoaded', () => {
         revealOnScroll.observe(el);
     });
 
-    // Contact Form Logic (Web3Forms API - Trimite direct in fundal)
+    // Contact Form Logic (Resend API prin Vercel Serverless Function)
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
-            
-            // ATENȚIE: Aici trebuie să pui cheia de la Web3Forms
-            const WEB3FORMS_ACCESS_KEY = "PUNE_CHEIA_AICI"; 
             
             const nume = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const dispozitiv = document.getElementById('device').value;
             const mesaj = document.getElementById('message').value;
             const submitBtn = contactForm.querySelector('button[type="submit"]');
-            
-            if(WEB3FORMS_ACCESS_KEY === "PUNE_CHEIA_AICI") {
-                alert("Te rog adaugă cheia Web3Forms în fișierul script.js pentru a putea trimite mesaje!");
-                return;
-            }
 
             // Schimbam textul butonului în timpul trimiterii
             const originalBtnText = submitBtn.innerHTML;
@@ -107,33 +99,31 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.disabled = true;
 
             try {
-                const response = await fetch('https://api.web3forms.com/submit', {
+                const response = await fetch('/api/send-email', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                         'Accept': 'application/json'
                     },
                     body: JSON.stringify({
-                        access_key: WEB3FORMS_ACCESS_KEY,
-                        subject: `Mesaj nou de la ${nume} - Alinutz Service`,
-                        from_name: nume,
+                        nume: nume,
                         email: email,
-                        Dispozitiv: dispozitiv,
-                        Mesaj: mesaj
+                        dispozitiv: dispozitiv,
+                        mesaj: mesaj
                     })
                 });
 
                 const result = await response.json();
-                if (response.status === 200) {
+                if (response.ok && result.success) {
                     alert("Mesajul a fost trimis cu succes! Te vom contacta în curând.");
                     contactForm.reset();
                 } else {
                     alert("A apărut o eroare. Te rugăm să încerci din nou.");
-                    console.log(result);
+                    console.error(result);
                 }
             } catch (error) {
                 alert("Eroare de rețea. Verifică conexiunea la internet.");
-                console.log(error);
+                console.error(error);
             } finally {
                 submitBtn.innerHTML = originalBtnText;
                 submitBtn.disabled = false;
