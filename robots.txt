@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://alinutzservice.ro/sitemap.xml
+Sitemap: https://www.alinutzservice.ro/sitemap.xml
