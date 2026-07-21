@@ -130,4 +130,73 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Slideshow Logic
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    let currentSlideIndex = 0;
+    let slideInterval;
+
+    function showSlide(index) {
+        if (slides.length === 0) return;
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+        
+        currentSlideIndex = (index + slides.length) % slides.length;
+        slides[currentSlideIndex].classList.add('active');
+        if (dots.length > currentSlideIndex) {
+            dots[currentSlideIndex].classList.add('active');
+        }
+    }
+
+    function nextSlide() {
+        showSlide(currentSlideIndex + 1);
+    }
+
+    function startSlideShow() {
+        slideInterval = setInterval(nextSlide, 3500); // changes every 3.5 seconds
+    }
+
+    // Global functions for inline HTML event handlers (onclick="currentSlide(N)")
+    window.currentSlide = function(index) {
+        clearInterval(slideInterval);
+        showSlide(index);
+        startSlideShow();
+    };
+
+    window.moveSlide = function(direction) {
+        clearInterval(slideInterval);
+        showSlide(currentSlideIndex + direction);
+        startSlideShow();
+    };
+
+    if (slides.length > 0) {
+        startSlideShow();
+    }
+
+    // FAQ Accordion Logic
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+    accordionHeaders.forEach(header => {
+        header.addEventListener('click', () => {
+            const item = header.parentElement;
+            const content = header.nextElementSibling;
+            
+            // Close other open FAQ items
+            const openItems = document.querySelectorAll('.accordion-item.open');
+            openItems.forEach(openItem => {
+                if (openItem !== item) {
+                    openItem.classList.remove('open');
+                    openItem.querySelector('.accordion-content').style.maxHeight = null;
+                }
+            });
+            
+            item.classList.toggle('open');
+            if (item.classList.contains('open')) {
+                content.style.maxHeight = content.scrollHeight + "px";
+            } else {
+                content.style.maxHeight = null;
+            }
+        });
+    });
 });
+

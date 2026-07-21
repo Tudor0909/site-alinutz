@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1K45S834ME"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-1K45S834ME');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alinutz Service | Reparații Telefoane, Laptopuri și PC-uri</title>
     <meta name="description" content="Alinutz Service oferă servicii premium de reparații pentru telefoane, laptopuri, PC-uri și console. Alege calitatea și profesionalismul.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.alinutzservice.ro/" />
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="shortcut icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon-48.png" type="image/png" sizes="48x48">
+    <link rel="icon" href="/favicon-512.png" type="image/png" sizes="512x512">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
     <meta name="theme-color" content="#050b14">
     
     <!-- Open Graph / SEO Social -->
@@ -113,11 +125,12 @@
             <div class="container hero-container">
                 <div class="hero-content reveal-left">
                     <div class="badge">
-                        <i class="fa-solid fa-bolt text-accent"></i> Soluții Service de Top
+                        <i class="fa-solid fa-bolt text-accent"></i> Servicii GSM și IT de top
                     </div>
                     <h1 class="hero-title">
                         Readucem la viață<br>
-                        <span class="text-gradient">tehnologia ta.</span>
+                        dispozitivele tale,<br>
+                        <span class="text-gradient">ca în prima zi.</span>
                     </h1>
                     <p class="hero-subtitle">
                         Service premium și reparații rapide pentru telefoane, laptopuri, PC-uri și console. Folosim unelte profesionale si oferim servicii de top pentru a garanta calitatea.
@@ -133,8 +146,8 @@
                             <p class="stat-text">Eficiență</p>
                         </div>
                         <div class="stat-item">
-                            <h3 class="stat-number">1 - 7 zile</h3>
-                            <p class="stat-text">Timp mediu de reparație</p>
+                            <h3 class="stat-number">Garanție</h3>
+                            <p class="stat-text">Piese și Manoperă</p>
                         </div>
                     </div>
                 </div>
@@ -143,9 +156,47 @@
                     <div class="glass-card hero-card">
                         <div class="card-glow"></div>
                         <div class="circuit-pattern"></div>
-                        <img src="imagine/reparatie.jpeg" alt="Reparații PC și Telefoane" class="hero-img">
-                        
+                        <div class="slideshow-container">
+                            <div class="slide active">
+                                <img src="imagine/slide1.webp" alt="Alinutz Service - Ecran iPhone impecabil" class="slider-img">
+                            </div>
+                            <div class="slide">
+                                <img src="imagine/slide2.webp" alt="Alinutz Service - Ecran telefon spart" class="slider-img">
+                            </div>
+                            <div class="slide">
+                                <img src="imagine/slide3.webp" alt="Alinutz Service - Telefon în cleme pe bancul de lucru" class="slider-img">
+                            </div>
+                            <div class="slide">
+                                <img src="imagine/slide4.webp" alt="Alinutz Service - Testare ecran și încărcare" class="slider-img">
+                            </div>
+                            <div class="slide">
+                                <img src="imagine/slide5.webp" alt="Alinutz Service - Telefon Realme finalizat" class="slider-img">
+                            </div>
+                            <div class="slide">
+                                <img src="imagine/slide6.webp" alt="Alinutz Service - Ecran laptop desprins" class="slider-img">
+                            </div>
+                            <div class="slide">
+                                <img src="imagine/slide7.webp" alt="Alinutz Service - MacBook reparat" class="slider-img">
+                            </div>
+                            
+                            <!-- Arrows -->
+                            <button class="slider-arrow prev" onclick="moveSlide(-1)" aria-label="Slide anterior">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+                            <button class="slider-arrow next" onclick="moveSlide(1)" aria-label="Slide următor">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
 
+                            <div class="slider-dots">
+                                <span class="dot active" onclick="currentSlide(0)"></span>
+                                <span class="dot" onclick="currentSlide(1)"></span>
+                                <span class="dot" onclick="currentSlide(2)"></span>
+                                <span class="dot" onclick="currentSlide(3)"></span>
+                                <span class="dot" onclick="currentSlide(4)"></span>
+                                <span class="dot" onclick="currentSlide(5)"></span>
+                                <span class="dot" onclick="currentSlide(6)"></span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -156,7 +207,7 @@
             <div class="container">
                 <div class="section-header reveal-up">
                     <h2 class="section-title">Servicii și <span class="text-accent">Prețuri</span></h2>
-                    <p class="section-desc">Găsește soluția potrivită pentru dispozitivul tău. Prețuri transparente și competitive.</p>
+                    <p class="section-desc price-note">Prețurile afișate reprezintă manopera sau estimări pentru modele standard. Costul piesei variază în funcție de modelul exact al dispozitivului tău. Contactează-ne pentru o ofertă exactă!</p>
                 </div>
 
                 <div class="services-grid">
@@ -269,6 +320,139 @@
             </div>
         </section>
 
+        <!-- Delivery and Repair Time Section -->
+        <section id="repair-time" class="repair-time section">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <h2 class="section-title">Când este gata <span class="text-accent">dispozitivul tău?</span></h2>
+                    <p class="section-desc">Timp mediu de livrare și reparație:</p>
+                </div>
+                
+                <div class="time-cards-container reveal-up">
+                    <div class="time-card glass-card">
+                        <div class="time-card-header">
+                            <i class="fa-solid fa-calendar-day text-accent"></i>
+                            <h3>Luni – Joi (înainte de 16:30)</h3>
+                        </div>
+                        <div class="time-card-body">
+                            <p>Telefonul tău este gata în <strong>2 zile lucrătoare</strong> (comandăm piesa pe loc, ajunge a doua zi și o montăm imediat).</p>
+                        </div>
+                    </div>
+
+                    <div class="time-card glass-card">
+                        <div class="time-card-header">
+                            <i class="fa-solid fa-clock-rotate-left text-accent"></i>
+                            <h3>Luni – Joi (după ora 16:30)</h3>
+                        </div>
+                        <div class="time-card-body">
+                            <p>Reparația durează <strong>3 zile lucrătoare</strong>, deoarece comanda de piese se procesează în următoarea zi lucrătoare.</p>
+                        </div>
+                    </div>
+
+                    <div class="time-card glass-card">
+                        <div class="time-card-header">
+                            <i class="fa-solid fa-calendar-week text-accent"></i>
+                            <h3>Vineri - Duminică</h3>
+                        </div>
+                        <div class="time-card-body">
+                            <p>Piesa se comandă luni, ajunge la noi marți sau miercuri, iar telefonul tău este reparat și gata de ridicare în aceeași zi în care sosesc componentele.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="time-tip glass-card reveal-up">
+                    <div class="tip-content">
+                        <span class="tip-icon">💡</span>
+                        <p><strong>Pont:</strong> Dacă ai o urgență, adu dispozitivul în service înainte de ora 16:30 ca să prindem curierul de piese în aceeași zi!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section (Accordion) -->
+        <section id="faq" class="faq section">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <h2 class="section-title">Întrebări <span class="text-accent">Frecvente</span> (FAQ)</h2>
+                    <p class="section-desc">Răspunsuri la cele mai comune întrebări despre serviciile noastre.</p>
+                </div>
+
+                <div class="faq-accordion-container reveal-up">
+                    <div class="accordion-item glass-card">
+                        <button class="accordion-header">
+                            <span>1. Se șterg datele (pozele, contactele) în timpul reparației?</span>
+                            <i class="fa-solid fa-chevron-down accordion-icon"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Nu. Reparațiile hardware (schimbare ecran, baterie, conector încărcare) nu afectează datele de pe dispozitiv. Cu toate acestea, pentru siguranța ta absolută, recomandăm să ai un backup la zi al datelor importante înainte de a lăsa orice dispozitiv în service.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item glass-card">
+                        <button class="accordion-header">
+                            <span>2. Ce fel de piese folosiți pentru reparații?</span>
+                            <i class="fa-solid fa-chevron-down accordion-icon"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Lucrăm exclusiv cu componente de înaltă calitate. În funcție de modelul dispozitivului tău (Telefon, Laptop, PC sau Consolă) și de bugetul tău, oferim ecrane și baterii Originale (Service Pack) sau componente Premium OEM (compatibile la cele mai înalte standarde din piață).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item glass-card">
+                        <button class="accordion-header">
+                            <span>3. Oferiți garanție pentru reparații?</span>
+                            <i class="fa-solid fa-chevron-down accordion-icon"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Da, absolut. Fiecare reparație hardware executată în service-ul nostru beneficiază de garanție atât pentru piesa înlocuită, cât și pentru manoperă. Pleci de la noi cu un dispozitiv sigur și testat complet.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item glass-card">
+                        <button class="accordion-header">
+                            <span>4. Cât costă diagnosticarea dacă decid să nu îl mai repar?</span>
+                            <i class="fa-solid fa-chevron-down accordion-icon"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Diagnosticarea este complet gratuită dacă alegi să repari dispozitivul la noi. În cazul în care apar defecțiuni majore pe placa de bază, iar reparația nu mai este rentabilă sau dorești doar identificarea problemei fără reparație, se va achita doar o taxă mică de diagnosticare pentru timpul alocat pe bancul de lucru.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item glass-card">
+                        <button class="accordion-header">
+                            <span>5. Primiți dispozitive la reparat și prin curier?</span>
+                            <i class="fa-solid fa-chevron-down accordion-icon"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Da! Dacă ești din altă localitate din județul Iași sau din țară și nu poți ajunge personal la service, ne poți trimite dispozitivul prin curier rapid. Îl diagnosticăm, te sunăm pentru a-ți spune prețul exact, îl reparăm și ți-l trimitem înapoi cu plată ramburs.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item glass-card">
+                        <button class="accordion-header">
+                            <span>6. De ce depinde timpul de așteptare pentru o piesă?</span>
+                            <i class="fa-solid fa-chevron-down accordion-icon"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Deoarece comandăm piese dedicate de la furnizori de top pentru a asigura calitatea, logistica depinde de ora de ridicare a curierului (16:30). Dacă aduci telefonul de luni până joi înainte de 16:30, piesa vine a doua zi și reparația e gata rapid. Tot ce se lasă vineri sau în weekend se procesează luni, reparația fiind finalizată la mijlocul săptămânii.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- CTA / Contact Section -->
         <section id="contact" class="contact section">
             <div class="container">
@@ -296,15 +480,7 @@
                                     <a href="tel:+40730381465">0730 381 465</a>
                                 </div>
                             </div>
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="fa-solid fa-location-dot"></i>
-                                </div>
-                                <div class="contact-text">
-                                    <h4>Locație</h4>
-                                    <a href="https://maps.google.com/?q=DC140+167,+Fântânele,+Iași,+România" target="_blank" rel="noopener noreferrer">DC140 167, Fântânele, Iași</a>
-                                </div>
-                            </div>
+
                         </div>
 
                         <div class="social-links">
@@ -369,12 +545,13 @@
             
             <div class="footer-bottom">
                 <p>&copy; <span id="year"></span> Alinutz Service. Toate drepturile rezervate.</p>
+                <p class="devixscale-credits">Site realizat de <span class="devixscale-highlight">DevixScale</span></p>
             </div>
         </div>
     </footer>
 
     <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/40730381465" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contactează-ne pe WhatsApp">
+    <a href="https://wa.me/40730381465?text=Salut!%20Am%20nevoie%20de%20o%20ofert%C4%83%20de%20pre%C8%9B%20pentru%20o%20repara%C8%9Bie." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contactează-ne pe WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
