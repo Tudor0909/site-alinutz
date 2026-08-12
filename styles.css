@@ -613,37 +613,57 @@ header.scrolled {
 .contact-details {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    margin-bottom: 3rem;
+    gap: 1.25rem;
+    margin-bottom: 2.5rem;
 }
 
-.contact-item {
+.contact-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 1.25rem 1.5rem;
     display: flex;
-    align-items: flex-start;
-    gap: 1rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: var(--transition-normal);
 }
 
-.contact-icon {
-    width: 40px;
-    height: 40px;
-    background: rgba(0, 240, 255, 0.1);
-    border-radius: 50%;
+.contact-card:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(0, 240, 255, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.contact-card-header {
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 0.6rem;
     color: var(--accent-secondary);
-    font-size: 1.2rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-family: var(--font-heading);
 }
 
-.contact-text h4 {
-    margin-bottom: 0.25rem;
+.contact-card-header i {
+    font-size: 1rem;
 }
 
-.contact-text a, .contact-text p {
-    color: var(--text-secondary);
+.contact-card-value {
+    color: #ffffff;
+    font-size: 1.25rem;
+    font-weight: 600;
+    font-family: var(--font-heading);
+    letter-spacing: 0.5px;
+    transition: color 0.2s ease;
+    word-break: break-all;
 }
 
-.contact-text a:hover {
+.contact-card-value:hover {
     color: var(--accent-secondary);
 }
 
