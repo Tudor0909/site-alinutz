@@ -705,6 +705,71 @@ header.scrolled {
 }
 
 /* ==========================================================================
+   Form Success State
+   ========================================================================== */
+.form-success-state {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+    animation: fadeInFormSuccess 0.35s ease-out forwards;
+}
+
+.btn-success-msg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0.9rem 1.5rem;
+    background: #10b981;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: #ffffff;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1.05rem;
+    border-radius: 9999px;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    user-select: none;
+}
+
+.btn-resend {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    width: 100%;
+    padding: 0.85rem 1.5rem;
+    background: rgba(10, 15, 30, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 9999px;
+    color: #ffffff;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: var(--transition-normal);
+    outline: none;
+}
+
+.btn-resend:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes fadeInFormSuccess {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================================================
    Footer
    ========================================================================== */
 footer {

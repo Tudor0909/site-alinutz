@@ -83,6 +83,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Contact Form Logic (Resend API prin Vercel Serverless Function)
     const contactForm = document.getElementById('contactForm');
+    const formActions = document.getElementById('formActions');
+    const formSuccessState = document.getElementById('formSuccessState');
+    const resendBtn = document.getElementById('resendBtn');
+
     if (contactForm) {
         contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -91,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const email = document.getElementById('email').value;
             const dispozitiv = document.getElementById('device').value;
             const mesaj = document.getElementById('message').value;
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const submitBtn = document.getElementById('submitBtn') || contactForm.querySelector('button[type="submit"]');
 
             // Schimbam textul butonului în timpul trimiterii
             const originalBtnText = submitBtn.innerHTML;
@@ -115,8 +119,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const result = await response.json();
                 if (response.ok && result.success) {
-                    alert("Mesajul a fost trimis cu succes! Te vom contacta în curând.");
                     contactForm.reset();
+                    if (formActions && formSuccessState) {
+                        formActions.style.display = 'none';
+                        formSuccessState.style.display = 'flex';
+                    }
                 } else {
                     alert("A apărut o eroare. Te rugăm să încerci din nou.");
                     console.error(result);
@@ -129,6 +136,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 submitBtn.disabled = false;
             }
         });
+
+        if (resendBtn && formActions && formSuccessState) {
+            resendBtn.addEventListener('click', () => {
+                formSuccessState.style.display = 'none';
+                formActions.style.display = 'block';
+                const firstInput = contactForm.querySelector('input');
+                if (firstInput) firstInput.focus();
+            });
+        }
     }
 
     // Slideshow Logic
