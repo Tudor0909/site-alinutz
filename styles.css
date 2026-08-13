@@ -858,6 +858,11 @@ footer {
 .devixscale-highlight {
     color: var(--text-secondary);
     font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.devixscale-highlight:hover {
+    color: var(--accent-secondary);
 }
 
 /* ==========================================================================
