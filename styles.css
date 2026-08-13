@@ -672,6 +672,10 @@ header.scrolled {
     gap: 1rem;
 }
 
+.mobile-socials-menu {
+    display: none;
+}
+
 .social-btn {
     width: 45px;
     height: 45px;
@@ -942,8 +946,32 @@ footer {
         z-index: 100;
     }
     
-    .nav-cta, .header-socials {
+    .nav-cta {
         display: none;
+    }
+    
+    .header-socials {
+        display: flex;
+        gap: 0.5rem;
+        margin-right: 0.75rem;
+    }
+    
+    .header-socials .social-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+    }
+
+    .mobile-socials-menu {
+        display: block;
+        margin-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        padding-top: 2rem;
+        width: 60%;
+    }
+    
+    .mobile-socials-menu .social-links {
+        justify-content: center;
     }
     
     .hero-title {
