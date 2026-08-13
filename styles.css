@@ -839,10 +839,11 @@ footer {
 
 .footer-bottom {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    gap: 0.4rem;
-    text-align: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
     padding-top: 2rem;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     color: var(--text-muted);
