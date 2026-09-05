@@ -2,35 +2,68 @@ document.addEventListener('DOMContentLoaded', () => {
     // Set current year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Mobile Menu Toggle
+    // Mobile Menu Toggle & Navigation
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
+    const navOverlay = document.getElementById('navOverlay');
     const mobileMenuIcon = document.querySelector('.mobile-menu-btn i');
 
-    mobileMenuBtn.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        
-        if (navLinks.classList.contains('active')) {
+    function openMobileMenu() {
+        if (!navLinks) return;
+        navLinks.classList.add('active');
+        if (navOverlay) navOverlay.classList.add('active');
+        if (mobileMenuIcon) {
             mobileMenuIcon.classList.remove('fa-bars');
             mobileMenuIcon.classList.add('fa-xmark');
-        } else {
+        }
+        document.body.classList.add('nav-open');
+        if (mobileMenuBtn) mobileMenuBtn.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeMobileMenu() {
+        if (!navLinks) return;
+        navLinks.classList.remove('active');
+        if (navOverlay) navOverlay.classList.remove('active');
+        if (mobileMenuIcon) {
             mobileMenuIcon.classList.remove('fa-xmark');
             mobileMenuIcon.classList.add('fa-bars');
         }
-    });
+        document.body.classList.remove('nav-open');
+        if (mobileMenuBtn) mobileMenuBtn.setAttribute('aria-expanded', 'false');
+    }
 
-    // Close mobile menu when a link is clicked
-    const links = document.querySelectorAll('.nav-link');
-    links.forEach(link => {
+    if (mobileMenuBtn && navLinks) {
+        mobileMenuBtn.addEventListener('click', () => {
+            if (navLinks.classList.contains('active')) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
+        });
+
+        if (navOverlay) {
+            navOverlay.addEventListener('click', closeMobileMenu);
+        }
+
+        // Close on Escape key press
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
+    }
+
+    // Close mobile menu when a navigation or CTA link is clicked
+    const menuLinks = document.querySelectorAll('.nav-link, .mobile-nav-cta');
+    menuLinks.forEach(link => {
         link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-            mobileMenuIcon.classList.remove('fa-xmark');
-            mobileMenuIcon.classList.add('fa-bars');
+            closeMobileMenu();
         });
     });
 
     // Navbar scroll effect
     const header = document.getElementById('header');
+    const navItems = document.querySelectorAll('.nav-link');
     
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
@@ -45,14 +78,14 @@ document.addEventListener('DOMContentLoaded', () => {
         
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
-            if (scrollY >= sectionTop - 150) {
+            if (window.scrollY >= sectionTop - 150) {
                 current = section.getAttribute('id');
             }
         });
 
-        links.forEach(link => {
+        navItems.forEach(link => {
             link.classList.remove('active');
-            if (link.getAttribute('href').includes(current)) {
+            if (current && link.getAttribute('href') === `#${current}`) {
                 link.classList.add('active');
             }
         });
