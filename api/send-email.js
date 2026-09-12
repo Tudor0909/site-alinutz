@@ -58,11 +58,12 @@ module.exports = async (req, res) => {
   }
 
   const nume = normalizeText(body.nume);
+  const telefon = normalizeText(body.telefon);
   const email = normalizeText(body.email).toLowerCase();
   const dispozitiv = normalizeText(body.dispozitiv);
   const mesaj = normalizeText(body.mesaj);
 
-  if (!nume || !email || !dispozitiv || !mesaj) {
+  if (!nume || !telefon || !email || !dispozitiv || !mesaj) {
     return res.status(400).json({
       success: false,
       error: 'Toate campurile sunt obligatorii.',
@@ -88,13 +89,14 @@ module.exports = async (req, res) => {
       from: RESEND_FROM,
       to: recipients,
       replyTo: email,
-      subject: `Mesaj nou de la ${nume} - Alinutz Service`,
+      subject: `Mesaj nou de la ${nume} (${telefon}) - Alinutz Service`,
       html: `
         <div style="font-family: Arial, sans-serif; padding: 20px; color: #111827;">
           <h2 style="margin: 0 0 16px;">Mesaj nou de pe site (Alinutz Service)</h2>
           <p><strong>Trimis la:</strong> ${escapeHtml(submittedAt)}</p>
           <p><strong>Nume:</strong> ${escapeHtml(nume)}</p>
-          <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+          <p><strong>Telefon:</strong> <a href="tel:${escapeHtml(telefon)}">${escapeHtml(telefon)}</a></p>
+          <p><strong>Email:</strong> <a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></p>
           <p><strong>Dispozitiv:</strong> ${escapeHtml(dispozitiv)}</p>
           <p><strong>Mesaj:</strong></p>
           <div style="white-space: pre-wrap; padding: 12px; background: #f3f4f6; border-radius: 8px;">${escapeHtml(mesaj)}</div>

@@ -117,14 +117,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // Contact Form Logic (Resend API prin Vercel Serverless Function)
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
+        const formActions = document.getElementById('formActions');
+        const formSuccessState = document.getElementById('formSuccessState');
+        const resendBtn = document.getElementById('resendBtn');
+
         contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
             const nume = document.getElementById('name').value;
+            const telefon = document.getElementById('phone').value;
             const email = document.getElementById('email').value;
             const dispozitiv = document.getElementById('device').value;
             const mesaj = document.getElementById('message').value;
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const submitBtn = document.getElementById('submitBtn') || contactForm.querySelector('button[type="submit"]');
 
             // Schimbam textul butonului în timpul trimiterii
             const originalBtnText = submitBtn.innerHTML;
@@ -140,6 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     },
                     body: JSON.stringify({
                         nume: nume,
+                        telefon: telefon,
                         email: email,
                         dispozitiv: dispozitiv,
                         mesaj: mesaj
@@ -148,10 +154,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const result = await response.json();
                 if (response.ok && result.success) {
-                    alert("Mesajul a fost trimis cu succes! Te vom contacta în curând.");
+                    if (formActions && formSuccessState) {
+                        formActions.style.display = 'none';
+                        formSuccessState.style.display = 'flex';
+                    } else {
+                        alert("Mesajul a fost trimis cu succes! Te vom contacta în curând.");
+                    }
                     contactForm.reset();
                 } else {
-                    alert("A apărut o eroare. Te rugăm să încerci din nou.");
+                    alert(result.error || "A apărut o eroare. Te rugăm să încerci din nou.");
                     console.error(result);
                 }
             } catch (error) {
@@ -162,6 +173,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 submitBtn.disabled = false;
             }
         });
+
+        if (resendBtn && formActions && formSuccessState) {
+            resendBtn.addEventListener('click', () => {
+                formSuccessState.style.display = 'none';
+                formActions.style.display = 'block';
+            });
+        }
     }
 
     // Slideshow Logic
